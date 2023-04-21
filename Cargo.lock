@@ -1454,7 +1454,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "wrike-cli"
+name = "wrs"
 version = "0.1.0"
 dependencies = [
  "anyhow",
