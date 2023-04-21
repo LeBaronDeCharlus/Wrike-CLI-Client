@@ -39,10 +39,6 @@ fn main() -> Result<()> {
         },
         None => {}
     }
-    //    if &args.list == "folders" {
-    //        let path: &str = "/folders";
-    //        folders::get_folders(&url, &path, &token)?;
-    //    }
 
     Ok(())
 }
