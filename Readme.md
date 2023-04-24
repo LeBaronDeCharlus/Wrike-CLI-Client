@@ -6,7 +6,16 @@ Wrs stands for **Wr**ike Ru**s**t. It's a Wrike CLI client helping you to search
 
 ## Installation
 
-Download a [releases](https://github.com/LeBaronDeCharlus/wrs/releases), and add binary in your Path.
+Download a [releases](https://github.com/LeBaronDeCharlus/wrs/releases), and add binary in your $PATH.
+
+`wrs` will look for 3 env vars.
+```rust
+    let user: String = env::var("WRIKE_USER")?;
+    let url: String = env::var("URL")?;
+    let token: String = env::var("TOKEN")?;
+```
+
+You need to configure and export them in your $PATH.
 
 ### Usage
 
