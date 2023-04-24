@@ -6,7 +6,7 @@ Wrs stands for **Wr**ike Ru**s**t. It's a Wrike CLI client helping you to search
 
 ## Installation
 
-Download [https://github.com/LeBaronDeCharlus/wrs/releases]('https://github.com/LeBaronDeCharlus/wrs/releases'), binary should be placed on your *bin* env.
+Download a [releases](https://github.com/LeBaronDeCharlus/wrs/releases), and add binary in your Path.
 
 ### Usage
 
