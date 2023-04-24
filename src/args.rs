@@ -26,6 +26,8 @@ pub struct Tasks {
     /// Filter searched tasks by status
     #[arg(long)]
     pub status: Option<String>,
+    #[arg(long)]
+    pub folder: Option<String>,
     /// Filter by only looking for your tasks
     #[arg(short, long)]
     pub me: bool,

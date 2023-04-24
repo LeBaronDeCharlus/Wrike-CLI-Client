@@ -28,13 +28,25 @@ fn main() -> Result<()> {
                 Some(search) => search,
                 None => "",
             };
+            let folder = match &args.folder {
+                Some(folder) => folder,
+                None => "",
+            };
 
             let user = if args.me { &user } else { &null };
-            let path = format!(
-                r##"/tasks?responsibles=[{}]&title={}&status={}"##,
-                user, search, status
-            );
-            tasks::get_tasks(&url, &path, &token)?;
+            if folder != "" {
+                let path = format!(
+                    r##"/folders/{}/tasks?responsibles=[{}]&title={}&status={}"##,
+                    folder, user, search, status
+                );
+                tasks::get_tasks(&url, &path, &token)?;
+            } else {
+                let path = format!(
+                    r##"/tasks?responsibles=[{}]&title={}&status={}"##,
+                    user, search, status
+                );
+                tasks::get_tasks(&url, &path, &token)?;
+            }
         }
 
         //        Some(Commands::Folders(_folders_arg)) => {}

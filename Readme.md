@@ -14,6 +14,7 @@ Download a [releases](https://github.com/LeBaronDeCharlus/wrs/releases), and add
     let url: String = env::var("URL")?;
     let token: String = env::var("TOKEN")?;
 ```
+Wrike user must be your `Contact ID`, see [this page](https://developers.wrike.com/api/v4/contacts/) for more information.
 
 You need to configure and export them in your $PATH.
 
@@ -44,6 +45,7 @@ Usage: wrs tasks [OPTIONS]
 Options:
       --search <SEARCH>  Search tasks, matching words in title
       --status <STATUS>  Filter searched tasks by status
+      --folder <FOLDER>
   -m, --me               Filter by only looking for your tasks
   -h, --help             Print help
 ```
