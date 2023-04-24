@@ -13,14 +13,22 @@ pub struct Cli {
 
 #[derive(Subcommand, Debug)]
 pub enum Commands {
-    //Task(Task)
+    /// Actions on tasks, default list your tasks
     Tasks(Tasks),
+    /// Actions on folders
     Folders(Folders),
 }
 
-#[derive(Args, Debug)]
+#[derive(Debug, Parser)]
 pub struct Tasks {
-    pub tasks_arg: Option<String>,
+    /// Search tasks, matching words in title
+    #[arg(short, long)]
+    pub search: Option<String>,
+    /// Filter searched tasks by status
+    #[arg(long)]
+    pub status: Option<String>,
+    #[arg(short, long)]
+    pub me: bool,
 }
 
 #[derive(Args, Debug)]
