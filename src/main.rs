@@ -36,7 +36,7 @@ fn main() -> Result<()> {
             let user = if args.me { &user } else { &null };
             if folder != "" {
                 let path = format!(
-                    r##"/folders/{}/tasks?responsibles=[{}]&title={}&status={}"##,
+                    r##"/folders/{}/tasks?responsibles=[{}]&title={}&status={}&descendants=true"##,
                     folder, user, search, status
                 );
                 tasks::get_tasks(&url, &path, &token)?;
