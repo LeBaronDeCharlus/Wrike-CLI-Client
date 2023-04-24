@@ -37,7 +37,7 @@ fn main() -> Result<()> {
             tasks::get_tasks(&url, &path, &token)?;
         }
 
-        Some(Commands::Folders(_folders_arg)) => {}
+        //        Some(Commands::Folders(_folders_arg)) => {}
         None => {}
     }
     Ok(())

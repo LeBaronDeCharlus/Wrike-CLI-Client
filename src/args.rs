@@ -15,18 +15,18 @@ pub struct Cli {
 pub enum Commands {
     /// Actions on tasks, default list your tasks
     Tasks(Tasks),
-    /// Actions on folders
-    Folders(Folders),
+    // Folders(Folders),
 }
 
 #[derive(Debug, Parser)]
 pub struct Tasks {
     /// Search tasks, matching words in title
-    #[arg(short, long)]
+    #[arg(long)]
     pub search: Option<String>,
     /// Filter searched tasks by status
     #[arg(long)]
     pub status: Option<String>,
+    /// Filter by only looking for your tasks
     #[arg(short, long)]
     pub me: bool,
 }
