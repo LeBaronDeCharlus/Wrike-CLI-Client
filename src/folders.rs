@@ -18,7 +18,7 @@ struct Folders {
     child_ids: Option<Vec<String>>,
 }
 
-pub fn _get_folders<'a>(url: &'a str, path: &'a str, token: &'a str) -> Result<()> {
+pub fn get_folders<'a>(url: &'a str, path: &'a str, token: &'a str) -> Result<()> {
     let client = reqwest::blocking::Client::new();
     let url: String = format!("{}{}", &url, &path);
     let res = client

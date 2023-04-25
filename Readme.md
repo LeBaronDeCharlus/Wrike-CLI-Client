@@ -28,8 +28,10 @@ Usage: wrs [COMMAND]
 
 Commands:
   tasks     Actions on tasks, default list your tasks
+  folders   Actions on folders, default list your folders
   contacts  Actions on contacts, default list your contacts
   help      Print this message or the help of the given subcommand(s)
+
 
 Options:
   -h, --help     Print help
@@ -61,6 +63,31 @@ Searching **my** (--me) task by looking on title **search** (--search) and filte
 +------------------+-----------------+----------+----------------------------------------------+--------+
 | IEABSXDCKRAXO2C7 | Check Mails DNS | Normal   | https://www.wrike.com/open.htm?id=1098344543 | Active |
 +------------------+-----------------+----------+----------------------------------------------+--------+
+```
+
+#### Folders action
+
+```shell
+> wrs folders --help
+
+Actions on folders, default list your folders
+
+Usage: wrs folders [OPTIONS]
+
+Options:
+      --permalink <PERMALINK>  
+  -h, --help
+```
+
+Getting folder information based on its permalink:
+
+```shell
+> wrs folders --permalink="https://www.wrike.com/open.htm?id=1234567890"
++------------------+----------------------+
+| id               | name                 |
++------------------+----------------------+
+| XXXXXXDCI5AY4JYE | My super folder name |
++------------------+----------------------+
 ```
 
 #### Contacts action

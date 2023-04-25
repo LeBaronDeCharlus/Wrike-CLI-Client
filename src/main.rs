@@ -50,6 +50,16 @@ fn main() -> Result<()> {
             }
         }
 
+        Some(Commands::Folders(args)) => {
+            let permalink = match &args.permalink {
+                Some(permalink) => permalink,
+                None => "",
+            };
+            let path = format!(r##"/folders?permalink={}"##, permalink);
+            folders::get_folders(&url, &path, &token)?;
+        }
+
+
         Some(Commands::Contacts(args)) => {
             let path = format!(
                 r##"/contacts?{}"##,
@@ -62,7 +72,6 @@ fn main() -> Result<()> {
             contacts::get_contacts(&url, &path, &token)?;
         }
 
-        //        Some(Commands::Folders(_folders_arg)) => {}
         None => {}
     }
     Ok(())

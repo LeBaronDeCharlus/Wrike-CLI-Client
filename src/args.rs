@@ -15,6 +15,8 @@ pub struct Cli {
 pub enum Commands {
     /// Actions on tasks, default list your tasks
     Tasks(Tasks),
+    /// Actions on folders, default list your folders
+    Folders(Folders),
     /// Actions on contacts, default list your contacts
     Contacts(Contacts),
     // Folders(Folders),
@@ -37,7 +39,8 @@ pub struct Tasks {
 
 #[derive(Args, Debug)]
 pub struct Folders {
-    pub folders_arg: Option<String>,
+    #[arg(long)]
+    pub permalink: Option<String>,
 }
 
 #[derive(Debug, Parser)]
@@ -46,8 +49,3 @@ pub struct Contacts {
     #[arg(short, long)]
     pub me: bool,
 }
-//#[derive(Args, Debug)]
-//pub struct Task {
-//    /// The string to reverse
-//    pub some_action: Option<String>,
-//}
