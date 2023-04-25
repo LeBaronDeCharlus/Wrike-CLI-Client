@@ -1,6 +1,7 @@
 mod args;
 mod folders;
 mod tasks;
+mod workflows;
 
 #[macro_use]
 extern crate prettytable;
@@ -50,6 +51,10 @@ fn main() -> Result<()> {
         }
 
         //        Some(Commands::Folders(_folders_arg)) => {}
+        Some(Commands::Workflows(_args)) => {
+            let path = format!(r##"/workflows"##,);
+            workflows::get_workflows(&url, &path, &token)?;
+        }
         None => {}
     }
     Ok(())

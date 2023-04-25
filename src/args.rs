@@ -15,6 +15,8 @@ pub struct Cli {
 pub enum Commands {
     /// Actions on tasks, default list your tasks
     Tasks(Tasks),
+    /// Actions on workflows, default list your workflows
+    Workflows(Workflows),
     // Folders(Folders),
 }
 
@@ -42,3 +44,6 @@ pub struct Folders {
 //    /// The string to reverse
 //    pub some_action: Option<String>,
 //}
+
+#[derive(Debug, Parser)]
+pub struct Workflows {}

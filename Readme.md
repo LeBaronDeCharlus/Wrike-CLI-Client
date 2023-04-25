@@ -27,6 +27,7 @@ Usage: wrs [COMMAND]
 
 Commands:
   tasks  Actions on tasks, default list your tasks
+  workflows  Actions on workflows, default list your workflows
   help   Print this message or the help of the given subcommand(s)
 
 Options:
@@ -59,4 +60,35 @@ Searching **my** (--me) task by looking on title **search** (--search) and filte
 +------------------+-----------------+----------+----------------------------------------------+--------+
 | IEABSXDCKRAXO2C7 | Check Mails DNS | Normal   | https://www.wrike.com/open.htm?id=1098344543 | Active |
 +------------------+-----------------+----------+----------------------------------------------+--------+
+```
+
+
+#### Workflows action
+
+```shell
+> wrs workflows --help
+
+Actions on workflows, default list your workflows
+
+Usage: wrs workflows
+
+Options:
+  -h, --help  Print help
+```
+
+List of my workflows
+
+```shell
+> wrs workflows
++------------------+-----------------+------------------+----------------+
+| id               | name            | status id        | status name    |
++------------------+-----------------+------------------+----------------+
+| XXXXXXDCK4AF7RFO | Sprint Workflow | XXXXXXDCJMAF7RFO | New            |
++------------------+-----------------+------------------+----------------+
+| XXXXXXDCK4AF7RFO | Sprint Workflow | XXXXXXDCJMAF7RFY | Completed      |
++------------------+-----------------+------------------+----------------+
+| XXXXXXDCK4AF7TDB | Design Workflow | XXXXXXDCJMCGSU22 | To be designed |
++------------------+-----------------+------------------+----------------+
+| XXXXXXDCK4AF7TDB | Design Workflow | XXXXXXDCJMB3JYA4 | To be reviewed |
++------------------+-----------------+------------------+----------------+
 ```
