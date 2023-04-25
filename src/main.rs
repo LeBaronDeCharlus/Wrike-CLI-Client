@@ -1,4 +1,5 @@
 mod args;
+mod contacts;
 mod folders;
 mod tasks;
 mod workflows;
@@ -50,11 +51,32 @@ fn main() -> Result<()> {
             }
         }
 
-        //        Some(Commands::Folders(_folders_arg)) => {}
+        Some(Commands::Folders(args)) => {
+            let permalink = match &args.permalink {
+                Some(permalink) => permalink,
+                None => "",
+            };
+            let path = format!(r##"/folders?permalink={}"##, permalink);
+            folders::get_folders(&url, &path, &token)?;
+        }
+
+        Some(Commands::Contacts(args)) => {
+            let path = format!(
+                r##"/contacts?{}"##,
+                if args.me {
+                    format!("me=")
+                } else {
+                    String::from("")
+                }
+            );
+            contacts::get_contacts(&url, &path, &token)?;
+        }
+
         Some(Commands::Workflows(_args)) => {
             let path = format!(r##"/workflows"##,);
             workflows::get_workflows(&url, &path, &token)?;
         }
+
         None => {}
     }
     Ok(())

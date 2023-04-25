@@ -14,7 +14,8 @@ Download a [releases](https://github.com/LeBaronDeCharlus/wrs/releases), and add
     let url: String = env::var("URL")?;
     let token: String = env::var("TOKEN")?;
 ```
-Wrike user must be your `Contact ID`, see [this page](https://developers.wrike.com/api/v4/contacts/) for more information.
+
+Wrike user must be your `Contact ID`, to get it, use `wrs contacts --me`.
 
 You need to configure and export them in your $PATH.
 
@@ -26,9 +27,12 @@ You need to configure and export them in your $PATH.
 Usage: wrs [COMMAND]
 
 Commands:
-  tasks  Actions on tasks, default list your tasks
+  tasks      Actions on tasks, default list your tasks
+  folders    Actions on folders, default list your folders
+  contacts   Actions on contacts, default list your contacts
   workflows  Actions on workflows, default list your workflows
-  help   Print this message or the help of the given subcommand(s)
+  help       Print this message or the help of the given subcommand(s)
+
 
 Options:
   -h, --help     Print help
@@ -62,6 +66,54 @@ Searching **my** (--me) task by looking on title **search** (--search) and filte
 +------------------+-----------------+----------+----------------------------------------------+--------+
 ```
 
+#### Folders action
+
+```shell
+> wrs folders --help
+
+Actions on folders, default list your folders
+
+Usage: wrs folders [OPTIONS]
+
+Options:
+      --permalink <PERMALINK>  
+  -h, --help
+```
+
+Getting folder information based on its permalink:
+
+```shell
+> wrs folders --permalink="https://www.wrike.com/open.htm?id=1234567890"
++------------------+----------------------+
+| id               | name                 |
++------------------+----------------------+
+| XXXXXXDCI5AY4JYE | My super folder name |
++------------------+----------------------+
+```
+
+#### Contacts action
+
+```shell
+> wrs contacts --help
+Actions on contacts, default list your contacts
+
+Usage: wrs contacts [OPTIONS]
+
+Options:
+  -m, --me    Filter by only looking for your own contact
+  -h, --help  Print help
+```
+
+Getting my contact information.
+
+```shell
+> wrs contacts --me
++----------+------------+-----------+------+
+| id       | first_name | last_name | me   |
++----------+------------+-----------+------+
+| JTVXADIP | John       | Doe       | true |
++----------+------------+-----------+------+
+```
 
 #### Workflows action
 
@@ -91,4 +143,3 @@ List of my workflows
 +------------------+-----------------+------------------+----------------+
 | XXXXXXDCK4AF7TDB | Design Workflow | XXXXXXDCJMB3JYA4 | To be reviewed |
 +------------------+-----------------+------------------+----------------+
-```
