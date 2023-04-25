@@ -17,6 +17,9 @@ pub enum Commands {
     Tasks(Tasks),
     /// Actions on folders, default list your folders
     Folders(Folders),
+    /// Actions on contacts, default list your contacts
+    Contacts(Contacts),
+    // Folders(Folders),
 }
 
 #[derive(Debug, Parser)]
@@ -38,4 +41,11 @@ pub struct Tasks {
 pub struct Folders {
     #[arg(long)]
     pub permalink: Option<String>,
+}
+
+#[derive(Debug, Parser)]
+pub struct Contacts {
+    /// Filter by only looking for your own contact
+    #[arg(short, long)]
+    pub me: bool,
 }
