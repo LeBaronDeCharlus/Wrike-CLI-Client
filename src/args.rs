@@ -15,7 +15,8 @@ pub struct Cli {
 pub enum Commands {
     /// Actions on tasks, default list your tasks
     Tasks(Tasks),
-    // Folders(Folders),
+    /// Actions on folders, default list your folders
+    Folders(Folders),
 }
 
 #[derive(Debug, Parser)]
@@ -35,10 +36,6 @@ pub struct Tasks {
 
 #[derive(Args, Debug)]
 pub struct Folders {
-    pub folders_arg: Option<String>,
+    #[arg(long)]
+    pub permalink: Option<String>,
 }
-//#[derive(Args, Debug)]
-//pub struct Task {
-//    /// The string to reverse
-//    pub some_action: Option<String>,
-//}
