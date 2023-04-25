@@ -1,4 +1,5 @@
 mod args;
+mod contacts;
 mod folders;
 mod tasks;
 
@@ -47,6 +48,18 @@ fn main() -> Result<()> {
                 );
                 tasks::get_tasks(&url, &path, &token)?;
             }
+        }
+
+        Some(Commands::Contacts(args)) => {
+            let path = format!(
+                r##"/contacts?{}"##,
+                if args.me {
+                    format!("me=")
+                } else {
+                    String::from("")
+                }
+            );
+            contacts::get_contacts(&url, &path, &token)?;
         }
 
         //        Some(Commands::Folders(_folders_arg)) => {}
