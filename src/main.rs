@@ -20,7 +20,7 @@ fn main() -> Result<()> {
 
     match &cli.command {
         Some(Commands::Tasks(args)) => {
-            let null = String::from("");
+            let null = String::new();
             let status = match &args.status {
                 Some(status) => status,
                 None => "[Active, Completed, Deferred, Cancelled]",
@@ -35,16 +35,14 @@ fn main() -> Result<()> {
             };
 
             let user = if args.me { &user } else { &null };
-            if folder != "" {
-                let path = format!(
-                    r##"/folders/{}/tasks?responsibles=[{}]&title={}&status={}&descendants=true"##,
-                    folder, user, search, status
-                );
+            if folder.is_empty() {
+                let path =
+                    format!(r##"/tasks?responsibles=[{user}]&title={search}&status={status}"##,);
                 tasks::get_tasks(&url, &path, &token)?;
             } else {
                 let path = format!(
-                    r##"/tasks?responsibles=[{}]&title={}&status={}"##,
-                    user, search, status
+                    r##"/folders/{}/tasks?responsibles=[{}]&title={}&status={}&descendants=true"##,
+                    &folder, &user, &search, &status
                 );
                 tasks::get_tasks(&url, &path, &token)?;
             }
@@ -55,18 +53,17 @@ fn main() -> Result<()> {
                 Some(permalink) => permalink,
                 None => "",
             };
-            let path = format!(r##"/folders?permalink={}"##, permalink);
+            let path = format!(r##"/folders?permalink={permalink}"##);
             folders::get_folders(&url, &path, &token)?;
         }
-
 
         Some(Commands::Contacts(args)) => {
             let path = format!(
                 r##"/contacts?{}"##,
                 if args.me {
-                    format!("me=")
+                    "me=".to_string()
                 } else {
-                    String::from("")
+                    String::new()
                 }
             );
             contacts::get_contacts(&url, &path, &token)?;

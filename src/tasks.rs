@@ -24,7 +24,7 @@ pub fn get_tasks<'a>(url: &'a str, path: &'a str, token: &'a str) -> Result<()> 
     let client = reqwest::blocking::Client::new();
     let url: String = format!("{}{}", &url, &path);
     let res = client
-        .get(&url)
+        .get(url)
         .header(AUTHORIZATION, token)
         .header(CONTENT_TYPE, "application/json")
         .header(ACCEPT, "application/json")
@@ -33,7 +33,7 @@ pub fn get_tasks<'a>(url: &'a str, path: &'a str, token: &'a str) -> Result<()> 
     let tasks: KindTask = res.json::<KindTask>().context("Could not decode json")?;
     let mut table = Table::new();
     table.add_row(row!["id", "name", "priority", "url", "status"]);
-    for i in tasks.data.iter() {
+    for i in &tasks.data {
         table.add_row(Row::new(vec![
             Cell::new(&i.id),
             Cell::new(&i.title),
@@ -61,7 +61,7 @@ pub fn _put_tasks<'a>(
     let client = reqwest::blocking::Client::new();
     let url: String = format!("{}{}", &url, &path);
     let _res = client
-        .put(&url)
+        .put(url)
         .json(&map)
         .header(AUTHORIZATION, token)
         .header(CONTENT_TYPE, "application/json")

@@ -32,7 +32,7 @@ pub fn get_folders<'a>(url: &'a str, path: &'a str, token: &'a str) -> Result<()
     let folders: KindFolder = res.json::<KindFolder>().context("Could not decode json")?;
     let mut table = Table::new();
     table.add_row(row!["id", "name",]);
-    for i in folders.data.iter() {
+    for i in &folders.data {
         if i.child_ids.is_some() {
             table.add_row(Row::new(vec![Cell::new(&i.id), Cell::new(&i.title)]));
         }

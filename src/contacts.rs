@@ -35,12 +35,12 @@ pub fn get_contacts<'a>(url: &'a str, path: &'a str, token: &'a str) -> Result<(
     let contacts: KindContact = res.json::<KindContact>().context("Could not decode json")?;
     let mut table = Table::new();
     table.add_row(row!["id", "first_name", "last_name", "me"]);
-    for i in contacts.data.iter() {
+    for i in &contacts.data {
         table.add_row(Row::new(vec![
             Cell::new(&i.id),
             Cell::new(&i.first_name),
             Cell::new(&i.last_name),
-            Cell::new(&i.me.map_or(String::from(""), |b| b.to_string())),
+            Cell::new(&i.me.map_or(String::new(), |b| b.to_string())),
         ]));
     }
     table.printstd();
